@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>등록페이지 연습</title>
+</head>
+<body>
+<h1>등록 페이지</h1>
+	<form action="crudEmpInsert.do" method="post" >
+		<p>
+			<label for="empnoInput">번호 :</label>
+			<input id="empnoInput" name="empno" value="1111">
+		</p>
+		<p>
+			<label> 이름 :
+				<input name="ename" value="홍길동">
+			</label>
+		</p>
+		<p>
+			<label> 직책 :
+				<input name="job" value="의적">
+			</label>
+		</p>
+		<p>
+			<label> 부서번호 :
+				<input name="deptno" value="10">
+			</label>
+		</p>
+		<p>
+			<label> 상사번호 :
+				<input name="mgr" value="7839">
+			</label>
+		</p>
+		<p>
+			<label> 연봉 :
+				<input name="sal" value="3000.0">
+			</label>
+		</p>
+		<p>
+			<label> 커미션 :
+				<input name="comm" value="0.00">
+			</label>
+		</p>
+		<p>
+			<button type="reset">초기화</button>
+			<button type="submit">제출</button>
+		</p>
+	</form>
+</body>
+</html>

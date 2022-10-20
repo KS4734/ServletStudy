@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>http 통신을 하는 웹서버 구현</h1>
+	<ul>
+		<li>java application인 아파치 톰캣 웹서버를 이용해서 
+		웹 어플리케이션(WebApplicationServer was)을 실행</li>
+		<li>웹어플리케이션의 특징 : 동적리소스를 작성할 수 있다(서버에서 실행되고 요청을 처리할 수 있다.)</li>
+		<li>자바의 동적 리소스 : HttpServlet은 톰캣에서 제공하는 타입 (외부라이브러리 사용)</li>
+		<li>정적 리소스 : 서버에서 실행되지 않고 바로 응답되는 자료 (html,css,js,mp3,image,......)</li>
+		<li>
+			<a href="servlet.do?a=30&b=10&c=3">
+			servlet.do GET제출 (링크,하이퍼텍스트)
+			</a>
+		</li>
+		<li>
+			<form action="servlet.do" method="get">
+				<label>
+					a : <input name="a" value="3" size="3">
+				</label> /
+				<label>
+					b : <input name="b" value="33" size="3">
+				</label> /
+				<label>
+					c : <input name="c" value="333" size="3">
+				</label>
+				<button>servlet.do GET제출 (form submit(X))</button>
+			</form>
+		</li>
+		<li>
+			<form action="servlet.do" method="post">
+				<label>
+					a : <input name="a" value="3" size="3">
+				</label> /
+				<label>
+					b : <input name="b" value="33" size="3">
+				</label> /
+				<label>
+					c : <input name="c" value="333" size="3">
+				</label>
+				<button>servlet.do POST제출 (form submit)</button>
+			</form>
+		</li>
+	</ul>
+	<h2>servlet 에서 JDBC 를 사용하자! (오후에는 쿼리 실행 ! 파라미터로 내용 바꾸기)</h2>
+	<ol>
+		<li>다이나믹 웹 프로젝트에 Mysql Connector J jar를 참조(WEB-INF/lib 복사)</li>
+		<li><a href="jdbcEmpList.do">사원 리스트 출력</a></li>
+		<li>파라미터를 이용해 부서별 사원 리스트 출력하기!
+			<ul>
+				<li><a href="jdbcEmpList2.do?deptno=10">10번 부서 직원 리스트</a></li>
+				<li><a href="jdbcEmpList2.do?deptno=20">20번 부서 직원 리스트</a></li>
+				<li><a href="jdbcEmpList2.do?deptno=30">30번 부서 직원 리스트</a></li>
+				<li><a href="jdbcEmpList2.do?deptno=40">40번 부서 직원 리스트</a></li>
+
+			</ul>
+		</li>
+		<li>CreateRreadUpateDetelet를 구현해보자 (부서 Scoot.emp)
+			<ul>
+				<li>
+					<a href="L04CRUDCreateForm.html">
+						Create : data를 등록 하는 인터페이스 (등록폼+등록처리 페이지)
+					</a>
+				</li>
+				<li>
+					<a href="crudEmpList.do">
+						Read : data를 출력하는 인터페이스 (List,Detail+UpdateForm)
+					</a>
+				</li>
+				<li>Update : data를 수정 하는 인터페이스 (UpdateForm+수정처리 페이지)</li>
+				<li>Delete : data를 삭제하는 인터페이스 (UpdateForm+삭제처리 페이지)</li>
+			</ul>
+		</li>
+	</ol>
+	<h2>JavaServletPage</h2>
+	<ul>
+		<li><a href="L05Jsp.jsp?a=11&b=33">정적페이지에서 동적으로 동작하는 Jsp</a></li>
+		<li><a href="L06JspDeptList.jsp">deptList 출력(model1 비권장)</a></li>
+		<li><a href="jspDeptList.do">Java Sevlet + jsp 로 deptList 출력(권장)</a></li>
+	</ul>
+	<h2> Http Session </h2>
+	<ul>
+		<li>로그인시 서버에서 유지시키는 객체인 세션을 만들어보자</li>
+		<ol>
+			<li> 톰켓 서버는 접속하는 클라이언트와 대응되는 (고유어아다제공) 세션객체를 생성한다. </li>
+			<li> 세션의 기본 만료시간은 30분인데 30분안에 재접속 시 만료시간을 리셋한다. </li>
+			<li> 세션 객체에 다른 객체르 ㄹ저장해 둘 수 있는데 보통 로그인에 이용하기 위해 사용된다.</li>
+			<li> 세션의 만료를 임의로 지정해 로그아웃을 이용할 수 있다. session.lavalidate()</li>
+			<li> 특정 객체만 삭제해서 로그아웃을 구현 할 수도 있다. session,removeAttribute("key")</li>
+			<li> DD (Development Descriptor) webapp > WEB_INF > web.xml : 배포서술자(톰캣서버 설정)에session config로 만료시간을 지정할 수 있다.</li>
+			<li> webapp > WEB_INF(배포되지 않는 경로) : 서버 설정이나 라이브러리를 올리는 경로 </li>
+			
+		</ol>
+
+		<li><a href="createSession.do">세션 객체 생성 (doGet)</a></li>
+		<li>
+			<form action="createSession.do" method="post">
+				<input placeholder="로그인 아이디" size="12" name="id">  /
+				<input placeholder="로그인 이름" size="12" name="name">
+				<button>게견 객체 생성 (doPost)</button>
+			</form>
+		</li>
+		<li><a href="getSession.do">세션 객체 불러오기</a></li>
+		<li><a href="removeSession.do">세션 객체 삭제</a></li>
+		<li><a href="invalidateSession.do">세션 객체 만료</a></li>
+	</ul>
+	<h2>Scott.Emp 로그인 구현 (사번+이름이 동일하면 로그인 성공) </h2>
+	<form action="sessionEmpLogin.do" method="post">
+		<p>
+			<label>
+				이름 : <input name="ename" type="text" value="king">
+			</label>
+		</p>
+		<p>
+			<label>
+				사번 : <input name="empno" type="password" value="7839">
+			</label>
+		</p>
+		<p>
+			<button>로그인</button>
+		</p>
+	</form>
+</body>
+</html>

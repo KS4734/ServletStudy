@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사원 등록 페이지</title>
+</head>
+<body>
+	<h1>사원 등록 페이지</h1>
+	<p>method.post : 파라미터를 요청 해더에 전달해서 길이제한이 없고,안전하다.
+		(공유할 수 있는 url이 아니다.)  
+	</p>
+	<form action="crudEmpInsert.do" method="post" >
+		<p>
+			<label for="empnoInput">사번 :</label>
+			<input id="empnoInput" name="empno" value="7777">
+		</p>
+		<p>
+			<label> 이름 :
+				<input name="ename" value="홍길동">
+			</label>
+		</p>
+		<p>
+			<label> 직책 :
+				<input name="job" value="의적">
+			</label>
+		</p>
+		<p>
+			<label> 부서번호 :
+				<input name="deptno" value="10">
+			</label>
+		</p>
+		<p>
+			<label> 상사번호 :
+				<input name="mgr" value="7839">
+			</label>
+		</p>
+		<p>
+			<label> 급여 :
+				<input name="sal" value="100.00">
+			</label>
+		</p>
+		<p>
+			<label> 커미션 :
+				<input name="comm" value="0.00">
+			</label>
+		</p>
+		<p>
+			<button type="reset">초기화</button>
+			<button type="submit">제출</button>
+		</p>
+	</form>
+</body>
+</html>
